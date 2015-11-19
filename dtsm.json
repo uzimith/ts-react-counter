@@ -27,6 +27,9 @@
     },
     "react-redux/react-redux.d.ts": {
       "ref": "fc341765ebbb04b7109981a25dced01f488f4d94"
+    },
+    "qs/qs.d.ts": {
+      "ref": "16134c168d021351acb1673ee9659644fc58c424"
     }
   }
 }

@@ -5,7 +5,7 @@ export interface State {};
 export interface Props {
   increment?: React.MouseEventHandler;
   incrementIfOdd?: React.MouseEventHandler;
-  incrementAsync?: React.MouseEventHandler;
+  incrementAsync?: { () : void };
   decrement?: React.MouseEventHandler;
   counter?: number;
 };
@@ -28,7 +28,7 @@ export default class Counter extends React.Component<Props, State> {
           {' '}
           <button onClick={incrementIfOdd}>Increment if odd</button>
           {' '}
-          <button onClick={incrementAsync}>Increment async</button>
+          <button onClick={() => incrementAsync() }>Increment async</button>
         </p>
       );
   }

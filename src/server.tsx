@@ -1,4 +1,5 @@
 import express from 'express';
+import * as qs from 'qs';
 import * as React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -10,10 +11,16 @@ import * as ReactDOM from 'react-dom/server';
 const app = express();
 const port = 3000;
 
+app.use(express.static('public'));
 app.use(handleRender);
 
 function handleRender(req, res) {
-    const store = configureStore({});
+    const params = qs.parse(req.query);
+    const counter = parseInt(params.counter) || 0;
+    let initialState = {
+      counter: counter
+    }
+    const store = configureStore(initialState);
 
     const html = ReactDOM.renderToString(
         <Provider store={store}>
@@ -21,23 +28,22 @@ function handleRender(req, res) {
         </Provider>
     );
 
-    const initialState = store.getState();
-
-    res.send(renderFullPage(html, initialState));
+    res.send(renderFullPage(html, store.getState()));
 };
+
 function renderFullPage(html, initialState) {
     return `
-        <!doctype html>
+        <!DOCTYPE html>
         <html>
           <head>
             <title>Redux Counter</title>
           </head>
           <body>
-            <div id="app">${html}</div>
+            <div id="root">${html}</div>
             <script>
               window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
             </script>
-            <script src="app.js"></script>
+            <script src="client.js"></script>
           </body>
         </html>
     `;

@@ -5,7 +5,9 @@ import { Provider } from 'react-redux';
 import App from './containers/App';
 import configureStore from './stores/configureStore';
 
-const initialState = window.__INITIAL_STATE__;
+interface WindowWithState extends Window { __INITIAL_STATE__: any };
+
+const initialState  = (window as WindowWithState).__INITIAL_STATE__;
 const store = configureStore(initialState);
 
 ReactDOM.render(
