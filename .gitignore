@@ -30,6 +30,5 @@ node_modules
 
 # generated files
 typings
-_tsc
-public/app.js
-
+build
+public/*.js

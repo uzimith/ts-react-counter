@@ -7,6 +7,7 @@
     "electron-prebuilt": "^0.35.0",
     "express": "^4.13.3",
     "keymirror": "^0.1.1",
+    "pm2": "^0.15.10",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-redux": "^4.0.0",
@@ -26,8 +27,11 @@
   "scripts": {
     "init": "npm install && dtsm install",
     "dtsm": "dtsm",
-    "compile": "watchify -v -t [ babelify ] _tsc/app.js -o \"public/app.js\" -d",
-    "watch": "tsc -w & watchify -v -t [ babelify ] _tsc/app.js -o \"public/app.js\" -d"
+    "watch:tsc": "tsc -w",
+    "watch:client": "watchify -v -t [ babelify ] build/client.js -o \"public/client.js\" -d",
+    "watch:server": "watchify -v -t [ babelify ] build/server.js --im --no-detect-globals --node -o \"public/server.js\" -d",
+    "server:dev": "node public/server.js",
+    "server:pm2": "pm2-dev run public/server.js"
   },
   "author": "",
   "license": "ISC"
