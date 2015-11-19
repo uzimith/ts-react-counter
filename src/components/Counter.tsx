@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-interface State {};
+export interface State {};
 
-interface Props {
-  increment: React.MouseEventHandler;
-  incrementIfOdd: React.MouseEventHandler;
-  incrementAsync: React.MouseEventHandler;
-  decrement: React.MouseEventHandler;
-  counter: number;
+export interface Props {
+  increment?: React.MouseEventHandler;
+  incrementIfOdd?: React.MouseEventHandler;
+  incrementAsync?: React.MouseEventHandler;
+  decrement?: React.MouseEventHandler;
+  counter?: number;
 };
 
 export default class Counter extends React.Component<Props, State> {

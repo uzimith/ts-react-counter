@@ -6,11 +6,12 @@
   "dependencies": {
     "electron-prebuilt": "^0.35.0",
     "express": "^4.13.3",
-    "key-mirror": "^1.0.1",
+    "keymirror": "^0.1.1",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-redux": "^4.0.0",
     "redux": "^3.0.4",
+    "redux-thunk": "^1.0.0",
     "typescript": "^1.6.2"
   },
   "devDependencies": {
@@ -24,6 +25,8 @@
   },
   "scripts": {
     "init": "npm install && dtsm install",
+    "dtsm": "dtsm",
+    "compile": "watchify -v -t [ babelify ] _tsc/app.js -o \"public/app.js\" -d",
     "watch": "tsc -w & watchify -v -t [ babelify ] _tsc/app.js -o \"public/app.js\" -d"
   },
   "author": "",

@@ -13,11 +13,20 @@
     }
   },
   "dependencies": {
+    "redux-thunk/redux-thunk.d.ts": {
+      "ref": "fc341765ebbb04b7109981a25dced01f488f4d94"
+    },
+    "express/express.d.ts": {
+      "ref": "fc341765ebbb04b7109981a25dced01f488f4d94"
+    },
     "react/react.d.ts": {
-      "ref": "efd40e67ff323f7147651bdbef03c03ead7b1675"
+      "ref": "fc341765ebbb04b7109981a25dced01f488f4d94"
     },
     "react/react-dom.d.ts": {
-      "ref": "c560ba6f0f55ce6f50e9d06e37b5bc0e2b9117b0"
+      "ref": "fc341765ebbb04b7109981a25dced01f488f4d94"
+    },
+    "react-redux/react-redux.d.ts": {
+      "ref": "fc341765ebbb04b7109981a25dced01f488f4d94"
     }
   }
-
+}
