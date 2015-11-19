@@ -7,8 +7,11 @@
         "rootDir": "./src",
         "sourceMap": true
     },
-    "exclude": [
-        "node_modules",
-        "build"
+    "files": [
+        "src/client.tsx",
+        "src/server.tsx",
+        "node_modules/typescript/lib/lib.es6.d.ts",
+        "typings/bundle.d.ts",
+        "typings/keymirror.d.ts"
     ]
 }

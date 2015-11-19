@@ -1,12 +1,13 @@
 import express from 'express';
 import * as qs from 'qs';
 import * as React from 'react';
+import * as ReactDOM from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import configureStore from './stores/configureStore'
 import App from './containers/App';
+import * as counterService from './services/counter';
 
-import * as ReactDOM from 'react-dom/server';
 
 const app = express();
 const port = 3000;
@@ -16,19 +17,22 @@ app.use(handleRender);
 
 function handleRender(req, res) {
     const params = qs.parse(req.query);
-    const counter = parseInt(params.counter) || 0;
-    let initialState = {
-      counter: counter
-    }
-    const store = configureStore(initialState);
+    counterService.fetchCounter().then( (apiCounter) => {
+      console.log(apiCounter);
+      const counter = parseInt(params.counter) || apiCounter || 0;
+      let initialState = {
+        counter: counter
+      };
+      const store = configureStore(initialState);
 
-    const html = ReactDOM.renderToString(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    );
+      const html = ReactDOM.renderToString(
+          <Provider store={store}>
+              <App />
+          </Provider>
+      );
 
-    res.send(renderFullPage(html, store.getState()));
+      res.send(renderFullPage(html, store.getState()));
+    });
 };
 
 function renderFullPage(html, initialState) {
