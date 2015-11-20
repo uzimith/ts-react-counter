@@ -1,9 +1,9 @@
-declare var km: KeyMirror;
-
-declare module 'keymirror' {
-  export default km;
-}
-
-interface KeyMirror {
+interface KeyMirrorStatic {
   (obj: any): any;
 }
+
+declare module 'keymirror' {
+  var keyMirror: KeyMirrorStatic;
+  export default keyMirror;
+}
+

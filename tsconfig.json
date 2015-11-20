@@ -12,6 +12,7 @@
         "src/server.tsx",
         "node_modules/typescript/lib/lib.es6.d.ts",
         "typings/bundle.d.ts",
-        "typings/keymirror.d.ts"
+        "typings/keymirror.d.ts",
+        "typings/serialize-javascript.d.ts"
     ]
 }

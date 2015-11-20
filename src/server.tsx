@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import configureStore from './stores/configureStore'
 import App from './containers/App';
 import * as counterService from './services/counter';
-
+import serialize from 'serialize-javascript';
 
 const app = express();
 const port = 3000;
@@ -18,7 +18,6 @@ app.use(handleRender);
 function handleRender(req, res) {
     const params = qs.parse(req.query);
     counterService.fetchCounter().then( (apiCounter) => {
-      console.log(apiCounter);
       const counter = parseInt(params.counter) || apiCounter || 0;
       let initialState = {
         counter: counter
@@ -45,7 +44,7 @@ function renderFullPage(html, initialState) {
           <body>
             <div id="root">${html}</div>
             <script>
-              window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+              window.__INITIAL_STATE__ = ${serialize(initialState)}
             </script>
             <script src="client.js"></script>
           </body>
