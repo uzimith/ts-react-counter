@@ -15,7 +15,8 @@
     "redux": "^3.0.4",
     "redux-thunk": "^1.0.0",
     "serialize-javascript": "^1.1.2",
-    "typescript": "^1.6.2"
+    "typescript": "^1.6.2",
+    "validator": "^4.2.1"
   },
   "devDependencies": {
     "babel": "^6.1.18",

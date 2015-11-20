@@ -8,6 +8,7 @@ import configureStore from './stores/configureStore'
 import App from './containers/App';
 import * as counterService from './services/counter';
 import serialize from 'serialize-javascript';
+import * as validator from 'validator';
 
 const app = express();
 const port = 3000;
@@ -18,7 +19,7 @@ app.use(handleRender);
 function handleRender(req, res) {
     const params = qs.parse(req.query);
     counterService.fetchCounter().then( (apiCounter) => {
-      const counter = parseInt(params.counter) || apiCounter || 0;
+      const counter = validator.toInt(params.counter) || apiCounter || 0;
       let initialState = {
         counter: counter
       };
